@@ -12,10 +12,12 @@ import chechRoles from '../middleware/chechRoles.js'
  * @swagger
  * /signup:
  *  post:
- *      summary: Creando usuario
+ *      summary: Creando nuevo usuario
  *      description: Creando
  *      produces: 
  *          - application/json
+ *          - x-access-token:
+ *              token
  *      parameters:
  *          - in: body
  *            name: agregando 
@@ -36,6 +38,27 @@ import chechRoles from '../middleware/chechRoles.js'
     aController.registrar
   );
   //[verifySignup.checkDuplicateUsernameOrEmail, verifySignup.checkRolesExisted],
+  /**
+ * @swagger
+ * /signin:
+ *  post:
+ *      summary: Login usuario
+ *      description: Logueando con usuario 
+ *      produces: 
+ *          - application/json
+ *      parameters:
+ *          - in: body
+ *            name: login 
+ *            schema:
+ *              type: string
+ *              format: string
+ *      responses:
+ *          201:
+ *              description: Logueado exitosamente
+ *              schema:
+ *                  type: json
+ * 
+ */
   ruta.post("/signin", aController.login);
 
 /**
