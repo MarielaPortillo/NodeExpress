@@ -1,0 +1,65 @@
+////////// Pruebas de Comercio
+
+// Listar comercios
+GET http://localhost:3000/listadocomercios
+
+###
+// Listar un comercio
+GET http://localhost:3000/uno/61492cb3b0f7d16fbf3abf4b
+
+###
+// Crear un comercio
+POST http://localhost:3000/registrar
+Content-Type: application/json
+
+{
+"nombre":"Comercio 02", "direccion":"Cibar"
+}
+
+###
+// Actualizar comercio
+PUT http://localhost:3000/editarComercio/61492cb3b0f7d16fbf3abf4b
+Content-Type: application/json
+
+{
+"nombre":"Comercio 02 modificado", "direccion":"San Cibar Modificado"
+}
+###
+// Eliminar Comercio
+
+DELETE http://localhost:3000/eliminarComercio/6142ac2c2d9355b8d0c92fda
+###
+
+////////// Pruebas de Usuario
+
+// Listado de usuarios
+GET http://localhost:3000/listadoUsuarios 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRlbnRpY2FkbyI6dHJ1ZSwiZW1haWwiOiJwcnVlYmE0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjMyMTg2NzMxLCJleHAiOjE2MzIyNzMxMzF9.hDYE-eL5w1FyrKgtssXGmH1X6FdaiJBL_jvFxF-1N5E
+###
+// Listar un usuario por id
+GET http://localhost:3000/unoUsu/6148e3e17f1d431ac6a31c3b
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRlbnRpY2FkbyI6dHJ1ZSwiZW1haWwiOiJwcnVlYmE0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjMyMTg2NzMxLCJleHAiOjE2MzIyNzMxMzF9.hDYE-eL5w1FyrKgtssXGmH1X6FdaiJBL_jvFxF-1N5E
+###
+// Loguearse con un usuario
+POST http://localhost:3000/autenticar 
+Content-Type: application/json
+
+{
+"email":"prueba4", "password":"1234"
+}
+
+###
+// Registrando un usuario
+POST http://localhost:3000/registrarUsu 
+Content-Type: application/json
+
+{
+"email":"prueba8", "password":"1234"
+}
+
+###
+
+
+DELETE http://localhost:3000/eliminarComercio/613bf97e4cb5aa62321c8bad
+
+//show dbs //use empredeapp //show collections //db.comercios.find()
