@@ -1,7 +1,7 @@
 import Router from "express"
 import cController from "../controllers/comercioController.js"
 import verify from "../middleware/autenticar.js";
-const ruta = Router();
+const rutaComercio = Router();
 
 //listar todos
 /**
@@ -19,7 +19,7 @@ const ruta = Router();
  *              type: json
  * 
  */
-ruta.get("/listadoComercios",cController.listado);
+ rutaComercio.get("/listadoComercios",cController.listado);
 /**
  * @swagger
  * /uno/{id}:
@@ -39,7 +39,7 @@ ruta.get("/listadoComercios",cController.listado);
  *              type: json
  * 
  */
-ruta.get("/uno/:id",cController.uno)
+ rutaComercio.get("/uno/:id",cController.uno)
 
 // Creando definicion de datos
 
@@ -76,7 +76,7 @@ ruta.get("/uno/:id",cController.uno)
  *              description: Creado exitosamente
  * 
  */
-ruta.post("/registrar", [verify.verfiyToken, verify.isAdmin],cController.registrar)
+ rutaComercio.post("/registrar", [verify.verfiyToken, verify.isAdmin],cController.registrar)
 
 //delete
 /**
@@ -98,7 +98,7 @@ ruta.post("/registrar", [verify.verfiyToken, verify.isAdmin],cController.registr
  *              type: json
  * 
  */
-ruta.delete("/eliminarComercio/:id",cController.eliminar)
+ rutaComercio.delete("/eliminarComercio/:id",cController.eliminar)
 
 /**
  * @swagger
@@ -124,5 +124,5 @@ ruta.delete("/eliminarComercio/:id",cController.eliminar)
  *              type: json
  * 
  */
-ruta.put("/editarComercio/:id",cController.actualizar)
-export default ruta 
+ rutaComercio.put("/editarComercio/:id",cController.actualizar)
+export default rutaComercio 
