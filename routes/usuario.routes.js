@@ -5,10 +5,7 @@ import verificacion from '../middleware/verificacion.js';
 import verify from '../middleware/autenticar.js'
 import chechRoles from '../middleware/chechRoles.js'
 
-ruta.get("/listadoUsuarios",[
-    verify.verfiyToken, 
-    verify.isAdmin, 
-    ],uController.listadou);
+ruta.get("/listadoUsuarios",uController.listadou);
 
 ruta.get("/buscarUsuario/:id", uController.uno);
 
