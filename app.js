@@ -10,40 +10,6 @@ import { createRoles } from "./libs/configInit.js";
 
 createRoles();
 
-const optionsusu =  {
-    swaggerDefinition: {
-        info: {
-            version: "1.0.0",
-            title: "Documentacion API",
-            description: "Documentando la API",
-            contact: {
-            name: "Belmont"
-            },
-            servers: ["http://localhost:5000"]
-        }
-    },
-    // ['.routes/*.js']
-    apis: ["./routes/usuario.routes.js"]
-   
-    
-  };
-  const optionsAuth =  {
-    swaggerDefinition: {
-        info: {
-            version: "1.0.0",
-            title: "Documentacion API",
-            description: "Documentando la API",
-            contact: {
-            name: "Belmont"
-            },
-            servers: ["http://localhost:5000"]
-        }
-    },
-    // ['.routes/*.js']
-    apis: ["./routes/autenticar.routes.js"]
-   
-    
-  };
 
 const options =  {
     swaggerDefinition: {
@@ -54,11 +20,11 @@ const options =  {
             contact: {
             name: "Belmont"
             },
-            servers: ["http://localhost:5000"]
+            servers: ["http://localhost:3000"]
         }
     },
     // ['.routes/*.js']
-    apis: ["./routes/comercio.routes.js"]
+    apis: ["./routes/documentacion.routes.js"]
    
     
   };
@@ -74,14 +40,7 @@ app.set('puerto',3000)
 
 
 const swaggerDocs = swaggerJSDoc(options);
-app.use('/api-docs-comercio', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-const swaggerDocsAuth = swaggerJSDoc(optionsAuth);
-app.use('/api-docs-auth', swaggerUi.serve, swaggerUi.setup(swaggerDocsAuth));
-
-//usuario
-const swaggerDocsusu = swaggerJSDoc(optionsusu);
-app.use('/api-docs-usuario', swaggerUi.serve, swaggerUi.setup(swaggerDocsusu));
+app.use('/api-documentacion', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
 
