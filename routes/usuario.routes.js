@@ -3,6 +3,7 @@ import uController from "../controllers/usuarioController.js"
 const ruta = Router();
 import verificacion from '../middleware/verificacion.js';
 import verify from '../middleware/autenticar.js'
+import chechRoles from '../middleware/chechRoles.js'
 
 
 //listar todos
@@ -21,7 +22,7 @@ import verify from '../middleware/autenticar.js'
  *              type: json
  * 
  */
-ruta.get("/listadoUsuarios",verificacion, uController.listadou)
+ruta.get("/listadoUsuarios", uController.listadou)
 
 
 // Creando definicion de datos
@@ -37,32 +38,6 @@ ruta.get("/listadoUsuarios",verificacion, uController.listadou)
  *              type: string
  * 
  */
-
-
-/**
- * @swagger
- * /registrarUsu:
- *  post:
- *      summary: Creando usuario
- *      description: Creando
- *      produces: 
- *          - application/json
- *      parameters:
- *          - in: body
- *            name: agregando 
- *            schema:
- *              type: string
- *              format: string
- *      responses:
- *          201:
- *              description: Creado exitosamente
- * 
- */
-ruta.post("/registrarUsu",uController.registraru)
-
-
-ruta.post("/autenticar", uController.autenticar)
-
 
 /**
  * @swagger
@@ -88,7 +63,12 @@ ruta.post("/autenticar", uController.autenticar)
  *              type: json
  * 
  */
-ruta.put("/editarUsuario/:id" ,verify.verfiyToken ,uController.actualizar)
+ruta.put("/editarUsuario/:id" ,[
+    verify.verfiyToken, 
+    verify.isAdmin, 
+    chechRoles.checkRolesExisted
+    ],
+    uController.actualizar);
 
 //delete
 /**
@@ -110,7 +90,11 @@ ruta.put("/editarUsuario/:id" ,verify.verfiyToken ,uController.actualizar)
  *              type: json
  * 
  */
-ruta.delete("/eliminarUsuario/:id", uController.eliminar)
+ruta.delete("/eliminarUsuario/:id",[
+    verify.verfiyToken, 
+    verify.isAdmin, 
+    ], 
+    uController.eliminar)
 
 export default ruta
 

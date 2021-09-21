@@ -27,6 +27,23 @@ const optionsusu =  {
    
     
   };
+  const optionsAuth =  {
+    swaggerDefinition: {
+        info: {
+            version: "1.0.0",
+            title: "Documentacion API",
+            description: "Documentando la API",
+            contact: {
+            name: "Belmont"
+            },
+            servers: ["http://localhost:5000"]
+        }
+    },
+    // ['.routes/*.js']
+    apis: ["./routes/autenticar.routes.js"]
+   
+    
+  };
 
 const options =  {
     swaggerDefinition: {
@@ -58,6 +75,9 @@ app.set('puerto',3000)
 
 const swaggerDocs = swaggerJSDoc(options);
 app.use('/api-docs-comercio', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+const swaggerDocsAuth = swaggerJSDoc(optionsAuth);
+app.use('/api-docs-auth', swaggerUi.serve, swaggerUi.setup(swaggerDocsAuth));
 
 //usuario
 const swaggerDocsusu = swaggerJSDoc(optionsusu);

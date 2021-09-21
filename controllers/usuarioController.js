@@ -21,60 +21,6 @@ controlador.listadou= async (req,res)=>{
         ));
 }
 
-controlador.registraru= async (req,res)=>{
-
-    const {email, password, rol}=req.body;
-    const nuevousuario = new usuario({email, password, rol});
-    const matchEmail = await usuario.findOne({ email: email });
-    //console.log(nuevousuario)
-    if (matchEmail) {
-        res.status(400).send({
-            "error": "Este email ya se encuentra en uso"
-        })
-        
-    }else{
-        await nuevousuario.save()
-        .then((entidad)=>res.status(200).send(entidad))
-        .catch((err)=>res.status(400).send(
-            {
-                "error":"No se pudo registrar el nuevo usuario",
-            }
-            ));
-    }
-    //nuevousuario.password = await nuevousuario.encryptPassword(password);
-    
-}
-controlador.autenticar = async (req,res)=>{
-    //servicio de consulta en la base de datos para verificar usuario y contraseña
-    const {email, password}=req.body;
-    const query = await usuario.findOne({ email: email });
-    // Verificando datos en la BD
-    if(email==query.email &&  password == query.password){
-        //payload
-        var datosToken={
-            autenticado:true,
-            email:email,
-            password:password
-        }
-        const token=jwt.sign(datosToken,llave,{
-            expiresIn:'1d'
-        });
-        res.status(200).send({
-            menssage: "Usuario autenticado",
-            token:token
-        })
-    }
-    else{
-        res.status(404).send({
-            mensaje:"usuario no encontrado",
-            password: password,
-        })
-    }
-}
-
-
-
-
 controlador.uno= async (req,res)=>{
     console.log("Consulta individual")
     await usuario.findById(req.params.id)
@@ -87,8 +33,6 @@ controlador.uno= async (req,res)=>{
         ));
     
 }
-
-
 
 //editar
 controlador.actualizar= async (req,res)=>{
