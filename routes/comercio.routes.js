@@ -1,5 +1,6 @@
 import Router from "express"
 import cController from "../controllers/comercioController.js"
+import verify from "../middleware/autenticar.js";
 const ruta = Router();
 
 //listar todos
@@ -75,7 +76,7 @@ ruta.get("/uno/:id",cController.uno)
  *              description: Creado exitosamente
  * 
  */
-ruta.post("/registrar",cController.registrar)
+ruta.post("/registrar", [verify.verfiyToken, verify.isAdmin],cController.registrar)
 
 //delete
 /**

@@ -3,12 +3,12 @@ import  Express  from "express";
 import Morgan from "morgan";
 import RutasComercio from "./routes/comercio.routes.js";
 import RutasUsuario from   "./routes/usuario.routes.js";
+import RutasAuth from   "./routes/autenticar.routes.js";
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from "swagger-jsdoc";
-import swaggerDocumentOne from './controllers/comercioController.js';
-import dbConexion from "./database.js";
+import { createRoles } from "./libs/configInit.js";
 
-
+createRoles();
 
 const optionsusu =  {
     swaggerDefinition: {
@@ -51,16 +51,17 @@ app.use(Express.urlencoded({extended:true}));
 app.use(Morgan('dev'))
 app.use(RutasComercio)
 app.use(RutasUsuario)
+app.use(RutasAuth)
 app.set('puerto',3000)
 
 
 
 const swaggerDocs = swaggerJSDoc(options);
-app.use('/api-docs-one', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/api-docs-comercio', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //usuario
 const swaggerDocsusu = swaggerJSDoc(optionsusu);
-app.use('/api-docs-seg', swaggerUi.serve, swaggerUi.setup(swaggerDocsusu));
+app.use('/api-docs-usuario', swaggerUi.serve, swaggerUi.setup(swaggerDocsusu));
 
 
 

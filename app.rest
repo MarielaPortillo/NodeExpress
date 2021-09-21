@@ -11,9 +11,10 @@ GET http://localhost:3000/uno/61492cb3b0f7d16fbf3abf4b
 // Crear un comercio
 POST http://localhost:3000/registrar
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGEwNzMwNzlkNmVjZGNmNjVlMGVjMCIsImlhdCI6MTYzMjI0MzM4OCwiZXhwIjoxNjMyMzI5Nzg4fQ.EzqFvQj9vegHu91qAMr2X86WRVQtq0xfCBSZg5knxIw
 
 {
-"nombre":"Comercio 02", "direccion":"Cibar"
+"nombre":"Comercio 03", "direccion":"Cibar"
 }
 
 ###

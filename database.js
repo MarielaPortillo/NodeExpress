@@ -1,8 +1,9 @@
 import  Mongoose  from "mongoose";
 
 Mongoose
+//mongodb://localhost/emprendeapp
 try {
-    Mongoose.connect( 'mongodb+srv://admin:1234@cluster0.u1fwz.mongodb.net/EmprendeApp', {useNewUrlParser: true, useUnifiedTopology: true}, () =>
+    Mongoose.connect( 'mongodb://localhost/emprendeapp', {useNewUrlParser: true, useUnifiedTopology: true}, () =>
     console.log("connected"));    
     }catch (error) { 
     console.log("could not connect");    

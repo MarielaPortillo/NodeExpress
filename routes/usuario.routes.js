@@ -1,7 +1,8 @@
 import Router from "express"
 import uController from "../controllers/usuarioController.js"
 const ruta = Router();
-import verificacion from '../middleware/verificacion.js'
+import verificacion from '../middleware/verificacion.js';
+import verify from '../middleware/autenticar.js'
 
 
 //listar todos
@@ -87,7 +88,7 @@ ruta.post("/autenticar", uController.autenticar)
  *              type: json
  * 
  */
-ruta.put("/editarUsuario/:id",uController.actualizar)
+ruta.put("/editarUsuario/:id" ,verify.verfiyToken ,uController.actualizar)
 
 //delete
 /**
