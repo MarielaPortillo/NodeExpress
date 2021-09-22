@@ -35,7 +35,7 @@ app.use(Morgan('dev'))
 app.use(RutasComercio)
 app.use(RutasUsuario)
 app.use(RutasAuth)
-app.set('puerto',3000)
+app.set('puerto', process.env.PORT || 3000)
 
 
 
