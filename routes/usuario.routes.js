@@ -1,15 +1,23 @@
 import Router from "express"
 import uController from "../controllers/usuarioController.js"
 const ruta = Router();
-import verificacion from '../middleware/verificacion.js';
 import verify from '../middleware/autenticar.js'
 import chechRoles from '../middleware/chechRoles.js'
 
-ruta.get("/listadoUsuarios",uController.listadou);
+ruta.get("/listadoUsuarios",[
+    verify.verfiyToken, 
+    verify.isAdmin, 
+    ],uController.listadou);
 
-ruta.get("/buscarUsuario/:id", uController.uno);
+ruta.get("/buscarUsuario/:id",[
+    verify.verfiyToken, 
+    verify.isAdmin, 
+    ], uController.uno);
 
-ruta.put("/editarUsuario/:id",
+ruta.put("/editarUsuario/:id",[
+    verify.verfiyToken, 
+    verify.isAdmin, 
+    ],
     uController.actualizar);
 
 //delete

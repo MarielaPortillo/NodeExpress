@@ -26,9 +26,9 @@ export const createRoles = async () => {
 
 export const createAdmin = async () => {
   // check for an existing admin user
-  const user = await User.findOne({ email: "admin@localhost" });
+  const user = await Usuario.findOne({ email: "admin@localhost" });
   // get roles _id
-  const roles = await Role.find({ name: { $in: ["admin", "moderator"] } });
+  const roles = await Role.find({ name: { $in: ["admin", "supervisor"] } });
 
   if (!user) {
     // create a new admin user

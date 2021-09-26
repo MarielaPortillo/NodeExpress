@@ -5,7 +5,6 @@ import Role from '../models/roles.js';
 import  bcrypt  from "bcryptjs";
 import jwt from "jsonwebtoken";
 //import llaveSecreta from "../middleware/llaveSecreta";
-import Verificacion from"../middleware/verificacion.js";
 import llave from "../middleware/llaveSecreta.js";
 
 //const llave = llaveSecreta(llaveSecreta);
