@@ -1,8 +1,6 @@
 import Usuario from "../models/usuario.js";
 import jwt from 'jsonwebtoken';
-import Role from '../models/roles.js'
-import bcrypt from 'bcryptjs'
-//import llave from '../middleware/llaveSecreta.js'
+import Role from '../models/roles.js';
 import llavesecreta from "../middleware/llaveSecreta.js";
 
 const controlador = {};
@@ -10,8 +8,6 @@ const controlador = {};
 controlador.registrar = async (req,res)=>{
     const {username,email,password, rol} = req.body;
 
-    /*const salt = await bcrypt.genSalt(10);
-    const clave =await bcrypt.hash(password, salt);*/
     const nuevoUsuario = new Usuario({
         username,
         email,
@@ -28,11 +24,8 @@ controlador.registrar = async (req,res)=>{
 
     }
     const createUsuario = await nuevoUsuario.save();
-    const token = jwt.sign({id: createUsuario._id},llavesecreta,{
-        expiresIn: '1d'
-
-    })
-    res.status(200).json({token});
+    
+    res.status(200).json({"nuevoUsuario": createUsuario});
 }
 
 controlador.login = async (req,res)=>{
